@@ -1,8 +1,8 @@
 Package: minibib
 Title: Create a smaller bibtex file which contains only the references in your tex file. 
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Anthony", "Ebert", email = "anthonyebert+CRAN@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Is your bibtex file massive compared to the number of references in your tex file? Try minibib!
 Depends: R (>= 3.4.3)
 Imports: 
   bibtex
