@@ -1,10 +1,11 @@
 
 #' Return a list of references is contained in a set of tex files and write that list to a new bibtex file.
-#' @param bibtex character path to bibtex file
+#' @param bibtex character path to bibtex file.
 #' @param write_bib a logical value. If TRUE, writes a bibtex file with the references contained in the tex file.
-#' @param path character vector of full path names
+#' @param path character vector of full path names.
 #' @param pattern a regular expression. File names matching the regular expression are returned.
 #' @param recursive a logical value. Should subdirectories be searched for tex files as well?
+#' @param file character filename of output bibtex file.
 #' @param ... further arguments passed to write.bib in the bibtex package
 #' @export
 minibib <- function(bibtex, write_bib = TRUE, path = ".", pattern = "\\.tex$", recursive = TRUE, file = "main.bib", ...){

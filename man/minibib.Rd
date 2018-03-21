@@ -8,15 +8,17 @@ minibib(bibtex, write_bib = TRUE, path = ".", pattern = "\\\\.tex$",
   recursive = TRUE, file = "main.bib", ...)
 }
 \arguments{
-\item{bibtex}{character path to bibtex file}
+\item{bibtex}{character path to bibtex file.}
 
 \item{write_bib}{a logical value. If TRUE, writes a bibtex file with the references contained in the tex file.}
 
-\item{path}{character vector of full path names}
+\item{path}{character vector of full path names.}
 
 \item{pattern}{a regular expression. File names matching the regular expression are returned.}
 
 \item{recursive}{a logical value. Should subdirectories be searched for tex files as well?}
+
+\item{file}{character filename of output bibtex file.}
 
 \item{...}{further arguments passed to write.bib in the bibtex package}
 }
