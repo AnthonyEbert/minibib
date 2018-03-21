@@ -6,13 +6,20 @@
 #' @param pattern a regular expression. File names matching the regular expression are returned.
 #' @param recursive a logical value. Should subdirectories be searched for tex files as well?
 #' @param file character filename of output bibtex file.
-#' @param ... further arguments passed to write.bib in the bibtex package
+#' @param type character specification of type of reference matching. Available choices are \code{"tex"} and \code{"Rmd"}.
+#' @param ... further arguments passed to write.bib in the bibtex package.
 #' @export
-minibib <- function(bibtex, write_bib = TRUE, path = ".", pattern = "\\.tex$", recursive = TRUE, file = "main.bib", ...){
+minibib <- function(bibtex, write_bib = TRUE, path = ".", pattern = "\\.tex$", recursive = TRUE, file = "main.bib", type = "tex", ...){
   x = bibtex::read.bib(bibtex)
 
+  if(type == "tex"){
+    input <- paste0("(\\{|,|\\s)", names(x), "(,|\\s|\\})")
+  } else if(type == "Rmd"){
+    input <- paste0("@", names(x), "(,|\\s|\\])")
+  }
+
   y = sapply(
-    names(x),
+    input,
     grepl,
     paste(
       sapply(
@@ -29,8 +36,10 @@ minibib <- function(bibtex, write_bib = TRUE, path = ".", pattern = "\\.tex$", r
     )
   )
 
+  names(y) <- names(x)
+
   if(write_bib){
-    bibtex::write.bib(x[names(x) %in% names(y[which(y)])], file = file, ...)
+    bibtex::write.bib(x[names(x) %in% names(y)[which(y)]], file = file, ...)
   }
 
   return(y)

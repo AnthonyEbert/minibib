@@ -5,7 +5,7 @@
 \title{Return a list of references is contained in a set of tex files and write that list to a new bibtex file.}
 \usage{
 minibib(bibtex, write_bib = TRUE, path = ".", pattern = "\\\\.tex$",
-  recursive = TRUE, file = "main.bib", ...)
+  recursive = TRUE, file = "main.bib", type = "tex", ...)
 }
 \arguments{
 \item{bibtex}{character path to bibtex file.}
@@ -20,7 +20,9 @@ minibib(bibtex, write_bib = TRUE, path = ".", pattern = "\\\\.tex$",
 
 \item{file}{character filename of output bibtex file.}
 
-\item{...}{further arguments passed to write.bib in the bibtex package}
+\item{type}{character specification of type of reference matching. Available choices are \code{"tex"} and \code{"Rmd"}.}
+
+\item{...}{further arguments passed to write.bib in the bibtex package.}
 }
 \description{
 Return a list of references is contained in a set of tex files and write that list to a new bibtex file.
