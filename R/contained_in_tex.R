@@ -7,7 +7,7 @@
 #' @param recursive a logical value. Should subdirectories be searched for tex files as well?
 #' @param ... further arguments passed to write.bib in the bibtex package
 #' @export
-contained_in_tex <- function(bibtex, write_bib = FALSE, path = ".", pattern = "\\.tex$", recursive = TRUE, ...){
+minibib <- function(bibtex, write_bib = TRUE, path = ".", pattern = "\\.tex$", recursive = TRUE, file = "main.bib", ...){
   x = bibtex::read.bib(bibtex)
 
   y = sapply(
@@ -29,7 +29,7 @@ contained_in_tex <- function(bibtex, write_bib = FALSE, path = ".", pattern = "\
   )
 
   if(write_bib){
-    bibtex::write.bib(x[names(x) %in% names(y[which(y)])], ...)
+    bibtex::write.bib(x[names(x) %in% names(y[which(y)])], file = file, ...)
   }
 
   return(y)
